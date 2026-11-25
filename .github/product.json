@@ -1,0 +1,16 @@
+{
+  "$schema": "https://raw.githubusercontent.com/waveshareteam/esp32-repo-template/v1/schema/product.schema.json",
+  "product": "ESP32-C6-Relay-1CH-U",
+  "product_url": "https://www.waveshare.com/esp32-c6-relay-1ch-u.htm",
+  "tier": 0,
+  "target": "esp32c6",
+  "esp_idf": {
+    "versions": [
+      "v6.1"
+    ]
+  },
+  "arduino": {
+    "core": "4.0.0",
+    "fqbn": "esp32:esp32:esp32c6:CDCOnBoot=cdc,FlashSize=4M,PartitionScheme=no_ota"
+  }
+}
