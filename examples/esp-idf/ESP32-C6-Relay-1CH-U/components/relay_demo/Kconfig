@@ -25,6 +25,6 @@ menu "ESP32-CX-Relay-1CH-U demo configuration"
 
     config RELAY_DEMO_AP_PASSWORD
         string "Wi-Fi access point password"
-        default "waveshare"
+        default "12345678"
 
 endmenu

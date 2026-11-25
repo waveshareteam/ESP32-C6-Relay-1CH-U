@@ -9,7 +9,7 @@
   </p>
   <p>
     <a href="https://www.waveshare.com/esp32-c6-relay-1ch-u.htm">🛒 产品</a> &middot;
-    <a href="https://github.com/waveshareteam/ESP32-C6-Relay-1CH-U/releases/latest">📦 固件</a> &middot;
+    <a href="firmware/README_ZH.md">📦 固件</a> &middot;
     <a href="examples/esp-idf/">🧩 ESP-IDF</a> &middot;
     <a href="examples/arduino/examples/">🔧 Arduino</a> &middot;
     <a href="https://docs.waveshare.net/ESP32-C6-Relay-1CH-U/">📖 文档</a>
@@ -35,7 +35,7 @@
 ## 📦 快速开始
 
 1. 编译 [ESP-IDF 继电器示例](examples/esp-idf/ESP32-C6-Relay-1CH-U/README_ZH.md)，或在发布后从[最新版本](https://github.com/waveshareteam/ESP32-C6-Relay-1CH-U/releases/latest)下载示例固件包。
-2. 通过 USB 连接开发板，按 [ESP-IDF 示例说明](examples/esp-idf/ESP32-C6-Relay-1CH-U/README_ZH.md#怎么运行)烧录。使用发布包时，运行其中的烧录脚本。
+2. 通过 USB 连接对应型号。单个合并 BIN 按[固件烧录说明](firmware/README_ZH.md)操作，发布包使用自带烧录脚本。
 
 ## 🧪 示例
 

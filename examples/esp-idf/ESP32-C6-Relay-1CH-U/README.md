@@ -24,7 +24,7 @@ To produce a single image for Flash Download Tool, run `idf.py merge-bin --forma
 
 ## Expected result
 
-In the default AP mode, connect to `ESP32-C6-Relay-1CH-U` with password `waveshare` and open `http://192.168.4.1/` to control the relay. In STA mode, connect your browser to the same network and open the IP address printed as `STA IP=` in the serial monitor.
+In the default AP mode, connect to `ESP32-C6-Relay-1CH-U` with password `12345678` and open `http://192.168.4.1/` to control the relay. In STA mode, connect your browser to the same network and open the IP address printed as `STA IP=` in the serial monitor.
 
 ## FAQ
 

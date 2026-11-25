@@ -9,7 +9,7 @@
   </p>
   <p>
     <a href="https://www.waveshare.com/esp32-c6-relay-1ch-u.htm">🛒 Product</a> &middot;
-    <a href="https://github.com/waveshareteam/ESP32-C6-Relay-1CH-U/releases/latest">📦 Firmware</a> &middot;
+    <a href="firmware/">📦 Firmware</a> &middot;
     <a href="examples/esp-idf/">🧩 ESP-IDF</a> &middot;
     <a href="examples/arduino/examples/">🔧 Arduino</a> &middot;
     <a href="https://www.waveshare.com/wiki/ESP32-C6-Relay-1CH-U">📖 Documentation</a>
@@ -35,7 +35,7 @@ A DIN-rail relay module with an RTC and USB Type-C for programming. This reposit
 ## 📦 Quick Start
 
 1. Build the [ESP-IDF relay demo](examples/esp-idf/ESP32-C6-Relay-1CH-U/) or download an example package from the [latest release](https://github.com/waveshareteam/ESP32-C6-Relay-1CH-U/releases/latest) when available.
-2. Connect the board by USB and follow the [ESP-IDF flashing instructions](examples/esp-idf/ESP32-C6-Relay-1CH-U/#how-to-run). For a release package, use its included flashing script.
+2. For a single merged BIN, connect the matching board by USB and follow the [firmware flashing instructions](firmware/). For a release package, use its included flashing script.
 
 ## 🧪 Examples
 
