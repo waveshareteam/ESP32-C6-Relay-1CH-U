@@ -1,0 +1,30 @@
+menu "ESP32-CX-Relay-1CH-U demo configuration"
+
+    choice RELAY_DEMO_MODE
+        prompt "Demo mode"
+        default RELAY_DEMO_MODE_WIFI_AP
+
+        config RELAY_DEMO_MODE_WIFI_AP
+            bool "Wi-Fi AP + Web"
+
+        config RELAY_DEMO_MODE_WIFI_STA
+            bool "Wi-Fi STA + Web"
+    endchoice
+
+    config RELAY_DEMO_STA_SSID
+        string "Wi-Fi station SSID"
+        default ""
+
+    config RELAY_DEMO_STA_PASSWORD
+        string "Wi-Fi station password"
+        default ""
+
+    config RELAY_DEMO_AP_SSID
+        string "Wi-Fi access point SSID"
+        default "ESP32-C6-Relay-1CH-U"
+
+    config RELAY_DEMO_AP_PASSWORD
+        string "Wi-Fi access point password"
+        default "waveshare"
+
+endmenu
