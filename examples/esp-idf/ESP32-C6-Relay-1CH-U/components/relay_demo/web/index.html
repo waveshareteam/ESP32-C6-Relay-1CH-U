@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f6f7fb">
-  <title>Relay Studio · 设备控制台</title>
+  <title>Relay Studio · Device Console</title>
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="/style.css">
   <script src="/app.js" defer></script>
@@ -22,55 +22,55 @@
 </defs></svg>
 
 <aside class="sidebar">
-  <a class="brand" href="/" aria-label="Relay Studio 首页"><span class="brand-mark">W</span><span>Relay Studio<small>WAVESHARE</small></span></a>
-  <div class="nav-label">设备工作台</div>
-  <nav aria-label="主导航">
-    <a href="/" class="nav-item" id="nav-overview"><svg><use href="#i-grid"/></svg>设备概览<span class="nav-arrow">›</span></a>
-    <a href="/RTC_Event" class="nav-item" id="nav-schedules"><svg><use href="#i-calendar"/></svg>定时任务<span class="nav-count" id="nav-count">0</span></a>
-    <a href="/WiFi_Test" class="nav-item" id="nav-wifi" hidden><svg><use href="#i-wifi"/></svg>Wi-Fi 测试</a>
+  <a class="brand" href="/" aria-label="Relay Studio home"><span class="brand-mark">W</span><span>Relay Studio<small>WAVESHARE</small></span></a>
+  <div class="nav-label">Workspace</div>
+  <nav aria-label="Main navigation">
+    <a href="/" class="nav-item" id="nav-overview"><svg><use href="#i-grid"/></svg>Overview<span class="nav-arrow">›</span></a>
+    <a href="/RTC_Event" class="nav-item" id="nav-schedules"><svg><use href="#i-calendar"/></svg>Schedules<span class="nav-count" id="nav-count">0</span></a>
+    <a href="/WiFi_Test" class="nav-item" id="nav-wifi" hidden><svg><use href="#i-wifi"/></svg>Wi-Fi Diagnostics</a>
   </nav>
-  <div class="sidebar-bottom"><span class="device-icon"><svg><use href="#i-chip"/></svg></span><strong>ESP32-C6</strong><span>Relay · 1 Channel</span><div class="device-tag">本地设备控制</div></div>
+  <div class="sidebar-bottom"><span class="device-icon"><svg><use href="#i-chip"/></svg></span><strong>ESP32-C6</strong><span>Relay · 1 Channel</span><div class="device-tag">Local device control</div></div>
 </aside>
 
 <main>
-  <header class="topbar"><div class="breadcrumb">我的设备 <span>/</span> <b id="breadcrumb">设备概览</b></div><span id="device-connection" class="connection"><i></i><span>正在连接设备</span></span></header>
-  <section class="page-heading"><div><div class="eyebrow">RELAY CONTROL CENTER</div><h1 id="page-title">设备控制台<span class="title-dot">.</span></h1><p id="page-subtitle">掌控每一次开关，让时间为你工作。</p></div><button id="refresh" class="button button-white"><svg><use href="#i-refresh"/></svg>刷新状态</button></section>
+  <header class="topbar"><div class="breadcrumb">My Devices <span>/</span> <b id="breadcrumb">Overview</b></div><span id="device-connection" class="connection"><i></i><span>Connecting to device</span></span></header>
+  <section class="page-heading"><div><div class="eyebrow">RELAY CONTROL CENTER</div><h1 id="page-title">Device Console<span class="title-dot">.</span></h1><p id="page-subtitle">Control the relay and manage schedules.</p></div><button id="refresh" class="button button-white"><svg><use href="#i-refresh"/></svg>Refresh Status</button></section>
 
-  <section class="metrics" aria-label="设备状态">
-    <article class="metric"><div class="metric-icon violet"><svg><use href="#i-wifi"/></svg></div><div><div class="metric-label">网络模式</div><div class="metric-value" id="network-mode">读取中</div><div class="metric-detail" id="network-detail">等待设备响应</div></div><span class="metric-dot" id="network-dot"></span></article>
-    <article class="metric"><div class="metric-icon mint"><svg><use href="#i-clock"/></svg></div><div><div class="metric-label">时钟数据来源</div><div class="metric-value" id="clock-source">读取中</div><div class="metric-detail" id="clock-detail">直接读取芯片时间</div></div></article>
-    <article class="metric"><div class="metric-icon amber"><svg><use href="#i-chip"/></svg></div><div><div class="metric-label">设备运行时间</div><div class="metric-value" id="uptime">--</div><div class="metric-detail" id="board-name">ESP32-C6-Relay-1CH-U</div></div></article>
+  <section class="metrics" aria-label="Device status">
+    <article class="metric"><div class="metric-icon violet"><svg><use href="#i-wifi"/></svg></div><div><div class="metric-label">Network Mode</div><div class="metric-value" id="network-mode">Loading</div><div class="metric-detail" id="network-detail">Waiting for device</div></div><span class="metric-dot" id="network-dot"></span></article>
+    <article class="metric"><div class="metric-icon mint"><svg><use href="#i-clock"/></svg></div><div><div class="metric-label">Clock Source</div><div class="metric-value" id="clock-source">Loading</div><div class="metric-detail" id="clock-detail">Read from onboard RTC</div></div></article>
+    <article class="metric"><div class="metric-icon amber"><svg><use href="#i-chip"/></svg></div><div><div class="metric-label">Uptime</div><div class="metric-value" id="uptime">--</div><div class="metric-detail" id="board-name">ESP32-C6-Relay-1CH-U</div></div></article>
   </section>
 
   <section class="control-grid" id="control-grid">
     <article class="card relay-card" id="relay-card">
-      <div class="card-top"><div><span class="section-kicker">OUTPUT CONTROL</span><h2>继电器控制</h2></div><span class="channel-tag">CH 01</span></div>
-      <div class="relay-body"><div class="power-orb"><svg><use href="#i-power"/></svg></div><div class="relay-text"><span class="state-caption">当前输出状态</span><h3 id="relay-label">正在读取</h3><p><i id="relay-dot"></i><span id="relay-description">等待设备返回状态</span></p></div><button class="switch" id="toggle" role="switch" aria-checked="false" aria-label="切换继电器" disabled><span></span></button></div>
-      <div class="relay-actions"><button id="relay-on" class="button button-primary" disabled><svg><use href="#i-power"/></svg>开启继电器</button><button id="relay-off" class="button button-white" disabled>关闭继电器</button></div>
-      <div class="card-note"><span class="small-dot"></span>操作后自动读取设备状态</div>
+      <div class="card-top"><div><span class="section-kicker">OUTPUT CONTROL</span><h2>Relay Control</h2></div><span class="channel-tag">CH 01</span></div>
+      <div class="relay-body"><div class="power-orb"><svg><use href="#i-power"/></svg></div><div class="relay-text"><span class="state-caption">Output State</span><h3 id="relay-label">Reading</h3><p><i id="relay-dot"></i><span id="relay-description">Waiting for relay status</span></p></div><button class="switch" id="toggle" role="switch" aria-checked="false" aria-label="Toggle relay" disabled><span></span></button></div>
+      <div class="relay-actions"><button id="relay-on" class="button button-primary" disabled><svg><use href="#i-power"/></svg>Turn On</button><button id="relay-off" class="button button-white" disabled>Turn Off</button></div>
+      <div class="card-note"><span class="small-dot"></span>Status refreshes automatically after each action</div>
     </article>
-    <article class="card clock-card"><div class="card-top"><div><span class="section-kicker">REAL-TIME CLOCK</span><h2>RTC 实时时钟</h2></div><span class="timezone" id="timezone">UTC+08:00</span></div><div class="clock-digits" id="rtc-time">--:--:--</div><div class="clock-date" id="rtc-date">正在读取设备时间</div><div class="rtc-origin">每秒读取板载 RTC · 不使用浏览器补秒</div><div class="clock-divider"></div><div class="rtc-register-state" id="rtc-register-state">等待芯片状态</div><button id="sync-time" class="button button-clock" disabled><svg><use href="#i-refresh"/></svg>使用手机 / 电脑时间校准</button><p class="clock-hint" id="sync-hint">打开网页即读取 RTC，点击校准才修改时间</p></article>
+    <article class="card clock-card"><div class="card-top"><div><span class="section-kicker">REAL-TIME CLOCK</span><h2>Onboard RTC</h2></div><span class="timezone" id="timezone">UTC+08:00</span></div><div class="clock-digits" id="rtc-time">--:--:--</div><div class="clock-date" id="rtc-date">Reading device time</div><div class="rtc-origin">Updated every second from the onboard RTC</div><div class="clock-divider"></div><div class="rtc-register-state" id="rtc-register-state">Waiting for RTC status</div><button id="sync-time" class="button button-clock" disabled><svg><use href="#i-refresh"/></svg>Sync Clock</button><p class="clock-hint" id="sync-hint">Sync copies this phone or computer’s time to the RTC.</p></article>
   </section>
 
-  <section class="card schedule-card" id="schedules"><div class="schedule-heading"><div><span class="section-kicker">AUTOMATION</span><h2>定时任务 <span class="count-badge" id="event-count">0 / 10</span></h2><p>按计划执行，让设备按时开启或关闭。</p></div><button class="button button-primary add-event" disabled><svg><use href="#i-plus"/></svg>添加任务</button></div><div class="table-wrap" id="event-table-wrap" hidden><table><thead><tr><th>任务</th><th>执行时间</th><th>动作</th><th>重复规则</th><th class="align-right">操作</th></tr></thead><tbody id="event-list"></tbody></table></div><div class="empty-state" id="empty-state"><div class="empty-icon"><svg><use href="#i-calendar"/></svg></div><h3>还没有定时任务</h3><p>添加一个计划，让继电器按时为你工作。</p><button class="text-button add-event" disabled>创建第一个任务 <span>↗</span></button></div><div class="schedule-footer"><span>最多支持 10 个任务 · 重启后任务会清空</span><span>按设备 RTC 时间执行</span></div></section>
+  <section class="card schedule-card" id="schedules"><div class="schedule-heading"><div><span class="section-kicker">AUTOMATION</span><h2>Schedules <span class="count-badge" id="event-count">0 / 10</span></h2><p>Set when the relay turns on or off.</p></div><button class="button button-primary add-event" disabled><svg><use href="#i-plus"/></svg>Add Schedule</button></div><div class="table-wrap" id="event-table-wrap" hidden><table><thead><tr><th>Schedule</th><th>Run Time</th><th>Relay Action</th><th>Repeat</th><th class="align-right">Actions</th></tr></thead><tbody id="event-list"></tbody></table></div><div class="empty-state" id="empty-state"><div class="empty-icon"><svg><use href="#i-calendar"/></svg></div><h3>No schedules yet</h3><p>Add a schedule to control the relay automatically.</p><button class="text-button add-event" disabled>Create a Schedule <span>↗</span></button></div><div class="schedule-footer"><span>Up to 10 schedules · Cleared on restart</span><span>Runs on device RTC time</span></div></section>
 
-  <section class="test-page wifi-page" aria-label="Wi-Fi 测试">
+  <section class="test-page wifi-page" aria-label="Wi-Fi Diagnostics">
     <div class="test-grid">
-      <article class="card test-card"><div class="card-top"><div><span class="section-kicker">WIRELESS DIAGNOSTICS</span><h2>当前网络</h2></div><span class="test-badge" id="wifi-state">读取中</span></div>
-        <p class="test-description" id="wifi-mode-note">正在读取网络模式…</p>
-        <dl class="data-grid"><div><dt>路由器 / SSID</dt><dd id="wifi-current-ssid">--</dd></div><div><dt>信号强度</dt><dd id="wifi-rssi">--</dd></div><div><dt>STA IP 地址</dt><dd id="wifi-ip">--</dd></div><div><dt>网关</dt><dd id="wifi-gateway">--</dd></div><div><dt>子网掩码</dt><dd id="wifi-netmask">--</dd></div><div><dt>DNS</dt><dd id="wifi-dns">--</dd></div><div><dt>频段 / 信道</dt><dd id="wifi-channel">--</dd></div><div><dt>STA MAC</dt><dd id="wifi-mac">--</dd></div><div><dt>本次连接时长</dt><dd id="wifi-duration">--</dd></div><div><dt>连接中断次数</dt><dd id="wifi-disconnects">--</dd></div></dl>
-        <p class="inline-status" id="wifi-result" role="status">等待测试</p>
-        <p class="test-footnote">Wi-Fi 名称和密码在固件 menuconfig 中修改，网页仅提供扫描和 Ping 测试。</p>
+      <article class="card test-card"><div class="card-top"><div><span class="section-kicker">WIRELESS DIAGNOSTICS</span><h2>Current Network</h2></div><span class="test-badge" id="wifi-state">Loading</span></div>
+        <p class="test-description" id="wifi-mode-note">Reading network mode…</p>
+        <dl class="data-grid"><div><dt>Router / SSID</dt><dd id="wifi-current-ssid">--</dd></div><div><dt>Signal Strength</dt><dd id="wifi-rssi">--</dd></div><div><dt>STA IP Address</dt><dd id="wifi-ip">--</dd></div><div><dt>Gateway</dt><dd id="wifi-gateway">--</dd></div><div><dt>Subnet Mask</dt><dd id="wifi-netmask">--</dd></div><div><dt>DNS</dt><dd id="wifi-dns">--</dd></div><div><dt>Band / Channel</dt><dd id="wifi-channel">--</dd></div><div><dt>STA MAC</dt><dd id="wifi-mac">--</dd></div><div><dt>Connection Time</dt><dd id="wifi-duration">--</dd></div><div><dt>Disconnects</dt><dd id="wifi-disconnects">--</dd></div></dl>
+        <p class="inline-status" id="wifi-result" role="status">Ready for testing</p>
+        <p class="test-footnote">Set the Wi-Fi name and password in menuconfig. Use this page to scan for networks and run ping tests.</p>
       </article>
-      <article class="card test-card"><div class="card-top"><div><span class="section-kicker">NEARBY NETWORKS</span><h2>附近的 Wi-Fi</h2></div><button id="wifi-scan" class="button button-white" disabled><svg><use href="#i-refresh"/></svg>扫描 Wi-Fi</button></div><p class="test-description" id="wifi-scan-hint">点击扫描，查看附近 Wi-Fi 的名称、信号和信道；扫描结果仅供查看。</p><div id="wifi-networks" class="wifi-networks"><div class="test-empty">尚未扫描网络</div></div><div class="ap-summary" id="wifi-ap-info">正在读取 AP 热点状态</div></article>
+      <article class="card test-card"><div class="card-top"><div><span class="section-kicker">NEARBY NETWORKS</span><h2>Nearby Networks</h2></div><button id="wifi-scan" class="button button-white" disabled><svg><use href="#i-refresh"/></svg>Scan Wi-Fi</button></div><p class="test-description" id="wifi-scan-hint">Scan to see nearby network names, signal strengths, and channels.</p><div id="wifi-networks" class="wifi-networks"><div class="test-empty">No scan run yet</div></div><div class="ap-summary" id="wifi-ap-info">Reading access point status</div></article>
     </div>
   </section>
 
-  <section class="test-page wifi-page ping-page" aria-label="百度 Ping 网络测试"><article class="card test-card"><div class="card-top"><div><span class="section-kicker">NETWORK REACHABILITY</span><h2>百度 Ping 测试</h2></div><div class="ping-controls"><span class="test-badge" id="ping-state">尚未测试</span><button id="wifi-ping" class="button button-primary" disabled>Ping 百度</button></div></div><p class="test-description" id="ping-target">www.baidu.com</p><dl class="ping-stats"><div><dt>已发送</dt><dd id="ping-sent">0 / 10</dd></div><div><dt>已收到</dt><dd id="ping-received">0</dd></div><div><dt>丢包率</dt><dd id="ping-loss">--</dd></div><div><dt>平均延迟</dt><dd id="ping-average">--</dd></div></dl><p id="ping-result" class="inline-status" role="status">连接网络后点击“Ping 百度”，通过当前 STA 网络测试 10 次。</p><div class="ping-log" id="ping-log" role="log" aria-label="Ping 结果"><p class="ping-empty">等待网络测试</p></div></article></section>
-  <footer class="page-footer"><span>RELAY STUDIO · <b id="firmware-version">20261028-c6-r2</b><span id="boot-id"></span></span><span id="last-update">等待首次更新</span></footer>
+  <section class="test-page wifi-page ping-page" aria-label="Baidu ping test"><article class="card test-card"><div class="card-top"><div><span class="section-kicker">NETWORK REACHABILITY</span><h2>Baidu Ping Test</h2></div><div class="ping-controls"><span class="test-badge" id="ping-state">Not started</span><button id="wifi-ping" class="button button-primary" disabled>Ping Baidu</button></div></div><p class="test-description" id="ping-target">www.baidu.com</p><dl class="ping-stats"><div><dt>Sent</dt><dd id="ping-sent">0 / 10</dd></div><div><dt>Received</dt><dd id="ping-received">0</dd></div><div><dt>Packet Loss</dt><dd id="ping-loss">--</dd></div><div><dt>Avg. Latency</dt><dd id="ping-average">--</dd></div></dl><p id="ping-result" class="inline-status" role="status">Once STA is connected, select Ping Baidu to send 10 requests over that connection.</p><div class="ping-log" id="ping-log" role="log" aria-label="Ping results"><p class="ping-empty">Waiting for ping results</p></div></article></section>
+  <footer class="page-footer"><span>RELAY STUDIO · <b id="firmware-version">20261028-c6-r2</b><span id="boot-id"></span></span><span id="last-update">Waiting for first update</span></footer>
 </main>
 
-<dialog id="event-dialog"><form id="event-form"><div class="dialog-heading"><div><span class="section-kicker">NEW AUTOMATION</span><h2>添加定时任务</h2></div><button type="button" class="close-button" id="close-dialog" aria-label="关闭">×</button></div><p class="dialog-description">选择执行时间和动作，时间以设备时区为准。</p><div class="form-grid"><label>执行日期<input id="event-date" type="date" min="1970-01-01" max="2069-12-31" required></label><label>执行时间<input id="event-time" type="time" step="1" required></label><label>继电器动作<select id="event-action"><option value="1">开启 CH1</option><option value="0">关闭 CH1</option><option value="2">保持当前状态</option></select></label><label>重复规则<select id="event-repeat"><option value="0">仅一次</option><option value="1">每天</option><option value="2">每周</option><option value="3">每月</option></select></label></div><p class="form-error" id="form-error" role="alert"></p><div class="dialog-actions"><button type="button" class="button button-white" id="cancel-dialog">取消</button><button type="submit" class="button button-primary" id="save-event">保存任务</button></div></form></dialog>
+<dialog id="event-dialog"><form id="event-form"><div class="dialog-heading"><div><span class="section-kicker">NEW AUTOMATION</span><h2>Add Schedule</h2></div><button type="button" class="close-button" id="close-dialog" aria-label="Close">×</button></div><p class="dialog-description">Choose a time and relay action. Use the device’s time zone.</p><div class="form-grid"><label>Date<input id="event-date" type="date" min="1970-01-01" max="2069-12-31" required></label><label>Time<input id="event-time" type="time" step="1" required></label><label>Relay Action<select id="event-action"><option value="1">Turn CH1 On</option><option value="0">Turn CH1 Off</option><option value="2">Keep Current State</option></select></label><label>Repeat<select id="event-repeat"><option value="0">Once</option><option value="1">Daily</option><option value="2">Weekly</option><option value="3">Monthly</option></select></label></div><p class="form-error" id="form-error" role="alert"></p><div class="dialog-actions"><button type="button" class="button button-white" id="cancel-dialog">Cancel</button><button type="submit" class="button button-primary" id="save-event">Save Schedule</button></div></form></dialog>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 </body>
 </html>
